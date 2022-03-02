@@ -25,8 +25,7 @@ public class PlaintextToHtmlConverter {
 
     private String basicHtmlEncode(String source) {
         
-        int  i = 0;
-        List<String> result = new ArrayList<>();
+        List<String> htmlOutcomeResult = new ArrayList<>();
         List<String> convertedLine = new ArrayList<>();
 
         for(char signToSignatureConverter: source.toCharArray()){
@@ -34,23 +33,26 @@ public class PlaintextToHtmlConverter {
                 if(signChecker.matches(signToSignatureConverter)){
                     convertedLine.add(signChecker.addHtmlSign());
                 }
+                else if(signToSignatureConverter=='\n'){
+                    addANewLine(convertedLine, htmlOutcomeResult);
+                }
+                else{
+                    convertedLine.add(String.valueOf(signToSignatureConverter));
+                }
             }
         }
-        addANewLine();
-        String finalResult = String.join("<br />", result);
+        addANewLine(convertedLine, htmlOutcomeResult);
+        String finalResult = String.join("<br />", htmlOutcomeResult);
         return finalResult;
     }
 
    
     //stringfy convertedLine array and push into result
     //reset convertedLine
-    private void addANewLine() {
+    private void addANewLine(List<String> convertedLine, List<String> htmlOutcomeResult) {
         String line = String.join("", convertedLine);
-        result.add(line);
+        htmlOutcomeResult.add(line);
         convertedLine = new ArrayList<>();
     }
 
-    private void pushACharacterToTheOutput() {
-        convertedLine.add(characterToConvert);
-    }
 }
