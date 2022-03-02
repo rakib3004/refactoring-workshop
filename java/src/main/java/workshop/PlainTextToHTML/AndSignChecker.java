@@ -1,4 +1,4 @@
-package workshop;
+package workshop.PlainTextToHTML;
 
 public class AndSignChecker implements SignChecker {
 

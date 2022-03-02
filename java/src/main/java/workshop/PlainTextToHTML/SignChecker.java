@@ -1,4 +1,4 @@
-package workshop;
+package workshop.PlainTextToHTML;
 
 public interface SignChecker {
     public boolean matches(char character);

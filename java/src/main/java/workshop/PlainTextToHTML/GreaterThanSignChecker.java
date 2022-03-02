@@ -1,4 +1,4 @@
-package workshop;
+package workshop.PlainTextToHTML;
 
 public class GreaterThanSignChecker implements SignChecker{
     public boolean matches(char character) {
