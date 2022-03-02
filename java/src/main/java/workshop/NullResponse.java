@@ -1,16 +1,17 @@
 package workshop;
 
-public class BuzzPatternMatcher implements PatternMatcher{
+public class NullResponse implements PatternMatcher{
 
 	@Override
 	public boolean matches(int number) {
 		// TODO Auto-generated method stub
-		return number % 5 == 0;
+		return false;
 	}
 
 	@Override
 	public String generateResponse() {
 		// TODO Auto-generated method stub
-		return "Buzz";
+		return "";
 	}
+	
 }
