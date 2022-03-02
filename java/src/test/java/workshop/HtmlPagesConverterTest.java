@@ -3,13 +3,15 @@ package workshop;
 import org.junit.Test;
 
 import workshop.PlainTextToHTML.PlaintextToHtmlConverter;
+import workshop.PlainTextToHTML.SignChecker;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class HtmlPagesConverterTest {
-    PlaintextToHtmlConverterFake converter = new PlaintextToHtmlConverterFake();
+    PlaintextToHtmlConverterFake converter = new PlaintextToHtmlConverterFake(null);
 
     @Test
     public void charConversion() throws Exception {
@@ -39,6 +41,10 @@ public class HtmlPagesConverterTest {
     }
 
     class PlaintextToHtmlConverterFake extends PlaintextToHtmlConverter {
+        public PlaintextToHtmlConverterFake(List<SignChecker> signCheckers) {
+            super(signCheckers);
+            //TODO Auto-generated constructor stub
+        }
         String text;
         protected void setRead(String text) {
             this.text = text;
