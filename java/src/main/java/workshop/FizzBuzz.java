@@ -13,8 +13,8 @@ public class FizzBuzz {
 	private static PatternMatcher nullObjectPattern;
     public FizzBuzz(List<PatternMatcher> patternMatchers, PatternMatcher nullObjectPattern) {
 		super();
-		this.patternMatchers = patternMatchers;
-		this.nullObjectPattern = nullObjectPattern;
+		FizzBuzz.patternMatchers = patternMatchers;
+		FizzBuzz.nullObjectPattern = nullObjectPattern;
 	}
 
 	public static String say(int number) {
