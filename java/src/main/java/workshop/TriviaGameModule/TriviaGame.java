@@ -6,17 +6,15 @@ import java.util.List;
 
 
 public class TriviaGame {
-    private final List<Player> playerList = new ArrayList<>();
-    private final List<Question> questionList = new ArrayList<>();
-    private final List<QuestionPatternMatcher> questionPatternMatcherList;
+    List<Player> playerList = new ArrayList<>();
+    List<Question> questionList = new ArrayList<>();
     List<PenaltyBox> penaltyBoxs;
-    private Question currentQuestion;
-    private Player currentPlayerObj;
-    private int currentPlayer = 0;
+    List<QuestionPatternMatcher> questionPatternMatcherList;
+    Question currentQuestion;
+    Player currentPlayerObj;
+    int currentPlayer = 0;
 
     public TriviaGame() {
-        // only for testing purpose
-        //this staffs will go where object will be created
         addQuestionType("Rock");
         addQuestionType("Sports");
         addQuestionType("Science");
@@ -58,6 +56,7 @@ public class TriviaGame {
         getCurrentPlayer();
         announce(currentPlayerObj.getName() + " is the current player");
         announce("They have rolled a " + roll);
+       
 
         if (currentPlayerObj.isInPenaltyBox()) {
 
@@ -112,7 +111,6 @@ public class TriviaGame {
 
                 winner = didPlayerWin();
             } else {
-                // why its return true?
                 currentPlayer = (currentPlayer + 1) % playerList.size();
                 return true;
             }
