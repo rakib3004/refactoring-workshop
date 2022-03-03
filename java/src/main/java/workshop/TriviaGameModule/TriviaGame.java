@@ -9,10 +9,10 @@ public class TriviaGame {
     private final List<Player> playerList = new ArrayList<>();
     private final List<Question> questionList = new ArrayList<>();
     private final List<QuestionPatternMatcher> questionPatternMatcherList;
+    List<PenaltyBox> penaltyBoxs;
     private Question currentQuestion;
     private Player currentPlayerObj;
     private int currentPlayer = 0;
-    private boolean isGettingOutOfPenaltyBox;
 
     public TriviaGame() {
         // only for testing purpose
@@ -46,7 +46,6 @@ public class TriviaGame {
         questionList.add(new Question(questionType));
     }
 
-    //its name will be addPlayer
     public void add(String playerName) {
         playerList.add(new Player(playerName));
 
@@ -55,14 +54,20 @@ public class TriviaGame {
     }
 
     public void roll(int roll) {
+        boolean isGettingOutOfPenaltyBox=false;
         getCurrentPlayer();
         announce(currentPlayerObj.getName() + " is the current player");
         announce("They have rolled a " + roll);
 
         if (currentPlayerObj.isInPenaltyBox()) {
-            if (roll % 2 != 0) {
-                isGettingOutOfPenaltyBox = true;
 
+            for(PenaltyBox penaltyBox: penaltyBoxs){
+                if(penaltyBox.checkPenaltyBox(roll)){
+                    isGettingOutOfPenaltyBox=penaltyBox.isGettingOutOfPenaltyBox();
+                }
+            }
+
+            if(isGettingOutOfPenaltyBox){
                 announce(currentPlayerObj.getName() + " is getting out of the penalty box");
                 currentPlayerObj.move(roll);
                 announce(currentPlayerObj.getName()
@@ -71,9 +76,7 @@ public class TriviaGame {
                 getCurrentQuestion();
                 announce("The category is " + currentQuestion.getQuestion_type());
                 announce(currentQuestion.getQuestion());
-            } else {
-                announce(currentPlayerObj.getName() + " is not getting out of the penalty box");
-                isGettingOutOfPenaltyBox = false;
+
             }
 
         } else {
@@ -95,7 +98,7 @@ public class TriviaGame {
         currentPlayerObj = playerList.get(currentPlayer);
     }
 
-    public boolean wasCorrectlyAnswered() {
+    public boolean wasCorrectlyAnswered(boolean isGettingOutOfPenaltyBox) {
         getCurrentPlayer();
         boolean winner = false;
         if (currentPlayerObj.isInPenaltyBox()) {
