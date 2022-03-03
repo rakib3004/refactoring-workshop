@@ -1,17 +1,17 @@
 package workshop;
 
-import org.junit.Test;
+/*import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;*/
 
 public class TriviaGameTest {
-    FakeTriviaGame game = new FakeTriviaGame();
+ /*   FakeTriviaGame game = new FakeTriviaGame();*/
 
-    @Test
+  /*  @Test
     public void correctlyAnswered() {
         game.add("Chet");
         game.add("Pat");
@@ -64,5 +64,5 @@ public class TriviaGameTest {
         protected List<String> getMessages() {
             return messages;
         }
-    }
+    }*/
 }
