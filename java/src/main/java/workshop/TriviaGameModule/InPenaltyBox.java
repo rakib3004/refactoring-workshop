@@ -1,5 +1,11 @@
 package workshop.TriviaGameModule;
 
-public class InPenaltyBox {
+public class InPenaltyBox implements PenaltyBox {
+    public boolean checkPenaltyBox(int rollValue){
+        return rollValue%2==0;
+}
+public boolean isGettingOutOfPenaltyBox(){
+    return false;
+}
     
 }
